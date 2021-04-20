@@ -3,7 +3,10 @@ Team Profile Generator - uses node.js Classes/SubClasses to create HTML
 
 GitHub Repo:  https://github.com/BrianBellanger/teamProfileGen
 
-Demonstration Video:  
+Demonstration Video:  https://drive.google.com/file/d/17N3vECCtUgXu8AocQEcCqw9jpI6fzNSL/view?usp=sharing
+[This video is also located in the root of the Repo on GitHub] 
+
+Sample HTML Output:  https://brianbellanger.github.io/teamProfileGen//Develop/output/team.html
 
 
 # Team Profile Generator
