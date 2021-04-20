@@ -5,15 +5,11 @@ const Employee = require('./Employee');
 
 // Create a `Manager` class that extends the `Employee` class
 class Manager extends Employee {
-    constructor(id, officeNumber) {
-        super(id, name, role, email);
+    constructor(name, id, role, email, officeNumber) {
+        super(name, id, role, email);
     this.officeNumber = officeNumber;
     }
-}
+};
 
-const manager = new Manager(id, officeNumber);
-
-console.log('---NEW MANAGER---');
-manager.printInfo();
 
 module.exports = Manager;

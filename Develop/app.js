@@ -1,4 +1,5 @@
 // Requirements:
+const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -11,6 +12,8 @@ const render = require("./lib/htmlRenderer");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
+// Array to hold objects
+var employees = [];
 
 
 // Instructions:
@@ -103,11 +106,21 @@ inquirer
         },
     ])
     .then((mgrResponse) => {
-        console.log("Manager Name:", mgrResponse.name);
-        console.log("Manager ID:", mgrResponse.id);
-        console.log("Manager Email:", mgrResponse.email);
-        console.log("Manager Office Number:", mgrResponse.officeNum);
-    
+        // console.log("Manager Name:", mgrResponse.name);
+        // console.log("Manager ID:", mgrResponse.id);
+        // console.log("Manager Role: Manager");
+        // console.log("Manager Email:", mgrResponse.email);
+        // console.log("Manager Office Number:", mgrResponse.officeNum);
+        
+        // Create new manager  -- Add to employee array
+        const manager = new Manager(mgrResponse.name, mgrResponse.id, "Manager", mgrResponse.email, mgrResponse.officeNum);
+
+        // console.log("New manager object: ", manager);
+
+        employees.push(manager);
+
+        console.log(employees);
+
         init();
     
     });
@@ -128,7 +141,7 @@ function engineerQ(){
         },
         {
         type: 'input',
-        name: 'installation',
+        name: 'email',
         message: "What is the engineer's email?",
         },
         {
@@ -138,12 +151,20 @@ function engineerQ(){
         },
     ])
     .then((engResponse) => {
-        console.log("Engineer Name:", engResponse.name);
-        console.log("Engineer ID:", engResponse.id);
-        console.log("Engineer Email:", engResponse.email);
-        console.log("Engineer GitHub username:", engResponse.github);
+        // console.log("Engineer Name:", engResponse.name);
+        // console.log("Engineer ID:", engResponse.id);
+        // console.log("Engineer Role: Engineer");
+        // console.log("Engineer Email:", engResponse.email);
+        // console.log("Engineer GitHub username:", engResponse.github);
         
-        // Add to Engineer Array
+        // Create new engineer  -- Add to employee array
+        const engineer = new Engineer(engResponse.name, engResponse.id, "Engineer", engResponse.email, engResponse.github);
+
+        // console.log("New engineer object: ", engineer);
+
+        employees.push(engineer);
+
+        console.log(employees);
 
         init();
     
@@ -175,11 +196,22 @@ function internQ(){
         },
     ])
 .then((intResponse) => {
-        console.log("Intern Name:", intResponse.name);
-        console.log("Intern ID:", intResponse.id);
-        console.log("Intern Email:", intResponse.email);
-        console.log("Intern School:", intResponse.school);
+        // console.log("Intern Name:", intResponse.name);
+        // console.log("Intern ID:", intResponse.id);
+        // console.log("Intern Role: intern");
+        // console.log("Intern Email:", intResponse.email);
+        // console.log("Intern School:", intResponse.school);
         
+
+        // Create new intern  -- Add to employee array
+        const intern = new Intern(intResponse.name, intResponse.id, "Intern", intResponse.email, intResponse.school);
+
+        // console.log("New intern object: ", intern);
+
+        employees.push(manager);
+
+        console.log(employees);
+
         init();
 
     });
@@ -187,5 +219,5 @@ function internQ(){
 
 
 
-// Begin:  Call init Fx
+// Begin:  Call initialize function
 init();
