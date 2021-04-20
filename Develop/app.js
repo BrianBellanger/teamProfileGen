@@ -50,7 +50,8 @@ inquirer
         type: 'list',
         message: 'Which type of team member would you like to add?',
         name: 'memberSelect',
-        choices: ["Manager", 
+        choices: [
+            "Manager", 
             "Engineer",
             "Intern",
             "Finished adding team member(s)"
@@ -73,7 +74,13 @@ inquirer
                 break;
             case "Finished adding team member(s)":
                 // Fin
-                render();
+                //render();
+                fs.writeFile(outputPath, render(employees), function(err) {
+                    if(err){
+                        console.log(err)
+                    }
+                    console.log("File Creation -- Success! \n Please find file in the output folder");
+                })
             default:
                 break;
             };  
@@ -113,13 +120,14 @@ inquirer
         // console.log("Manager Office Number:", mgrResponse.officeNum);
         
         // Create new manager  -- Add to employee array
-        const manager = new Manager(mgrResponse.name, mgrResponse.id, "Manager", mgrResponse.email, mgrResponse.officeNum);
+        const manager = new Manager(mgrResponse.name, mgrResponse.id, mgrResponse.email, mgrResponse.officeNum);
 
+        // console.log('manager', manager.getRole())
         // console.log("New manager object: ", manager);
 
         employees.push(manager);
 
-        console.log(employees);
+        // console.log(employees);
 
         init();
     
@@ -158,13 +166,13 @@ function engineerQ(){
         // console.log("Engineer GitHub username:", engResponse.github);
         
         // Create new engineer  -- Add to employee array
-        const engineer = new Engineer(engResponse.name, engResponse.id, "Engineer", engResponse.email, engResponse.github);
+        const engineer = new Engineer(engResponse.name, engResponse.id, engResponse.email, engResponse.github);
 
         // console.log("New engineer object: ", engineer);
 
         employees.push(engineer);
 
-        console.log(employees);
+        // console.log(employees);
 
         init();
     
@@ -204,13 +212,13 @@ function internQ(){
         
 
         // Create new intern  -- Add to employee array
-        const intern = new Intern(intResponse.name, intResponse.id, "Intern", intResponse.email, intResponse.school);
+        const intern = new Intern(intResponse.name, intResponse.id, intResponse.email, intResponse.school);
 
         // console.log("New intern object: ", intern);
 
-        employees.push(manager);
+        employees.push(intern);
 
-        console.log(employees);
+        // console.log(employees);
 
         init();
 
